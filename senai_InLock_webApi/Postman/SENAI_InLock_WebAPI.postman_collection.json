@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "89adbdaf-5878-4f59-9a59-d693f13f78d3",
+		"name": "SENAI_InLock_WebAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Jogos.Cadastrar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"NomeJogo\" : \"Assassin's Creed\",\r\n    \"Descricao\" : \"Assassin's Creed é um jogo\",\r\n    \"DataLancamento\" : \"2007-11-13\",\r\n    \"Valor\" : 30.00,\r\n    \"IdEstudio\" : 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/jogos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"jogos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Jogos.ListarTodos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/jogos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"jogos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuarios.Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Email\" : \"admin@admin.com\",\r\n    \"Senha\" : \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
