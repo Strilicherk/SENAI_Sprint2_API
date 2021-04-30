@@ -24,7 +24,7 @@ namespace senai.hroads.webApi.Interfaces
         /// <summary>
         /// Cadastra um novo usuário
         /// </summary>
-        /// <param name="novoUsuário">Objeto novoUsuário com as informações do usuário cadastrado</param>
+        /// <param name="novoUsuario">Objeto novoUsuário com as informações do usuário cadastrado</param>
         void Cadastrar(Usuario novoUsuario);
 
         /// <summary>
