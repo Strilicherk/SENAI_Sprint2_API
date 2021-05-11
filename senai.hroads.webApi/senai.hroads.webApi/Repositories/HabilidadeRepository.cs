@@ -26,7 +26,6 @@ namespace senai.hroads.webApi.Repositories
         {
             //busca uma habilidade através do id
             Habilidade habilidadeBuscada = ctx.Habilidades.Find(id);
-            Habilidade idBuscadoHabilidade = ctx.Habilidades.Find(id);
 
             //verifica se o nome da habilidade foi informado
             if (habilidadeAtualizada.NomeHabilidade != null)
