@@ -7539,11 +7539,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Repositorios VS CODE\\SENAI_Sprint2_API\\senai_medical_group.webApi\\senai_medical_group.webApi\\senai_medical_group.webApi\\senai_medical_group.webApi.csproj",
+      "projectUniqueName": "C:\\Users\\mathe\\OneDrive\\Área de Trabalho\\senai_medical_group.webApi\\senai_medical_group.webApi\\senai_medical_group.webApi\\senai_medical_group.webApi.csproj",
       "projectName": "senai_medical_group.webApi",
-      "projectPath": "D:\\Repositorios VS CODE\\SENAI_Sprint2_API\\senai_medical_group.webApi\\senai_medical_group.webApi\\senai_medical_group.webApi\\senai_medical_group.webApi.csproj",
+      "projectPath": "C:\\Users\\mathe\\OneDrive\\Área de Trabalho\\senai_medical_group.webApi\\senai_medical_group.webApi\\senai_medical_group.webApi\\senai_medical_group.webApi.csproj",
       "packagesPath": "C:\\Users\\mathe\\.nuget\\packages\\",
-      "outputPath": "D:\\Repositorios VS CODE\\SENAI_Sprint2_API\\senai_medical_group.webApi\\senai_medical_group.webApi\\senai_medical_group.webApi\\obj\\",
+      "outputPath": "C:\\Users\\mathe\\OneDrive\\Área de Trabalho\\senai_medical_group.webApi\\senai_medical_group.webApi\\senai_medical_group.webApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\mathe\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7621,7 +7621,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.204\\RuntimeIdentifierGraph.json"
       }
     }
   }

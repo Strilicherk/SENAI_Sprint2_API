@@ -111,6 +111,46 @@ namespace senai_medical_group.webApi.Repositories
             return ctx.Medicos.ToList();
         }
 
-       
+        public List<Medico> ListarConsultas(int id)
+        {
+            var medicoBuscado = ctx.Medicos.Include(p => p.IdUsuarioNavigation)
+                                               .Where(p => p.IdUsuario == id)
+                                               .Select(p => new Medico()
+                                               {
+                                                   IdMedico = p.IdMedico,
+
+                                                   NomeMedico = p.NomeMedico,
+
+                                                   IdUsuarioNavigation = new Usuario()
+                                                   {
+                                                       IdUsuario = p.IdUsuarioNavigation.IdUsuario,
+
+                                                       Email = p.IdUsuarioNavigation.Email
+                                                   },
+
+                                                   IdEspecialidadeNavigation = new Especialidade()
+                                                   {
+                                                       IdEspecialidade = p.IdEspecialidadeNavigation.IdEspecialidade,
+
+                                                       Especialidade1 = p.IdEspecialidadeNavigation.Especialidade1
+                                                   },
+
+                                                   IdClinicaNavigation = new Clinica()
+                                                   {
+                                                       IdClinica = p.IdClinicaNavigation.IdClinica,
+
+                                                       HorarioAbertura = p.IdClinicaNavigation.HorarioAbertura,
+
+                                                       HorarioFechamento = p.IdClinicaNavigation.HorarioFechamento,
+
+                                                       Endereco = p.IdClinicaNavigation.Endereco,
+
+                                                       NomeFantasia = p.IdClinicaNavigation.NomeFantasia,
+
+                                                       RazaoSocial = p.IdClinicaNavigation.RazaoSocial
+                                                   }
+                                               });
+            return medicoBuscado.ToList();
+        }
     }
 }

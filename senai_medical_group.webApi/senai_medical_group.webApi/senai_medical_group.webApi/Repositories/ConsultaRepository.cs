@@ -132,7 +132,7 @@ namespace senai_medical_group.webApi.Repositories
         public void Situacao(int id, string status)
         {
             Consulta consultaBuscada = ctx.Consulta
-                .FirstOrDefault(p => p.IdConsulta == id);
+                                          .FirstOrDefault(p => p.IdConsulta == id);
 
             switch (status)
             {

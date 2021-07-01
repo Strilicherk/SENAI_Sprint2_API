@@ -13,5 +13,7 @@ namespace senai_medical_group.webApi.Interfaces
         void Cadastrar(Medico novoMedico);
         void Atualizar(int id, Medico medicoAtualizado);
         void Deletar(int id);
+
+        List<Medico> ListarConsultas(int id);
     }
 }

@@ -49,6 +49,14 @@ namespace senai_medical_group.webApi.Controllers
             // Retorna a resposta da requisição fazendo a chamada para o método
             return Ok(_medicoRepository.Listar());
         }
+           
+        [Authorize (Roles = "2")]
+        [HttpGet("medico-consulta")]
+        public IActionResult GetConsultas()
+        {
+            int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+            return Ok(_medicoRepository.ListarConsultas(idUsuario));
+        }
 
         /// <summary>
         /// Busca um médico através do id

@@ -36,10 +36,10 @@ namespace senai_medical_group.webApi.Controllers
         }
 
         /// <summary>
-        /// Lista as consultas do médico que está logado
+        /// Lista as consultas do usuário que está logado
         /// </summary>
         /// <returns>Uma lista de consultas</returns>
-        [Authorize(Roles = "2")]
+        [Authorize(Roles = "2, 3")]
         [HttpGet("minhas")]
         public IActionResult GetMinhas()
         {
@@ -130,9 +130,16 @@ namespace senai_medical_group.webApi.Controllers
         [HttpPatch("{id}")]
         public IActionResult AtualizarSituacao(int id, Situacao status)
         {
+            try
+            {
                 _consultaRepository.Situacao(id, status.Situacao1);
 
                 return StatusCode(204);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
     }
 }

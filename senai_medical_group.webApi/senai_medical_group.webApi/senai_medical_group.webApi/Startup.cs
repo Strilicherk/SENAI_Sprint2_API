@@ -4,10 +4,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace senai_medical_group.webApi
@@ -18,25 +21,41 @@ namespace senai_medical_group.webApi
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services
-                .AddControllers()
+            services.AddSwaggerGen(c => 
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Medical.webApi", Version = "v1" });
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
+            services.AddControllers()
                 .AddNewtonsoftJson(options =>
                 {
                     // Ignora os loopings nas consultas
                     options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                    // Ignora valores nulos ao fazer junções nas consultas
+                    // Ignora valores nulos ao fazer junï¿½ï¿½es nas consultas
                     options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                 });
 
+                services.AddCors(options => {
+                    options.AddPolicy("CorsPolicy",
+                        builder => {
+                            builder.WithOrigins("http://localhost:3000","http://localhost:19006")
+                                                                       .AllowAnyHeader()
+                                                                       .AllowAnyMethod();
+                        }
+                    );
+                });
+
             services
-            // Define a forma de autenticação
+            // Define a forma de autenticaï¿½ï¿½o
             .AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = "JwtBearer";
                 options.DefaultChallengeScheme = "JwtBearer";
             })
 
-                // Define os parâmetros de validação do token
+                // Define os parï¿½metros de validaï¿½ï¿½o do token
                 .AddJwtBearer("JwtBearer", options =>
                 {
                      options.TokenValidationParameters = new TokenValidationParameters
@@ -75,9 +94,19 @@ namespace senai_medical_group.webApi
 
             app.UseAuthentication();
 
+            app.UseSwagger();
+
             app.UseRouting();
 
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+
+
             app.UseAuthorization();
+
+            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
             {
